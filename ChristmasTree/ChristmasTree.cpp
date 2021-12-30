@@ -8,7 +8,7 @@ AsciiChristmasTree::AsciiChristmasTree(
     assert(InSectionNum >= 1);
     mHeight = InSectionNum * 3;
     mWidth = FIRST_SECTION_MAX_WIDTH + (InSectionNum - 1) * STEP_TO_SECTION;
-    mTreeTable.reserve(mHeight * mWidth);
+    mTreeTable = std::make_shared<std::vector<char>>(mHeight * mWidth);
     mMiddleX = mWidth / 2;
     ConstructTree();
 }
@@ -43,11 +43,11 @@ void AsciiChristmasTree::CreateSection(const int InNumberOfSection)
             {
                 charToDraw = ' ';
             }
-            mTreeTable.push_back(charToDraw);
+            mTreeTable->push_back(charToDraw);
         }
         --pointToDraw;
         countToDraw += 2;
-        mTreeTable.push_back('\n');
+        mTreeTable->push_back('\n');
     }
     mMiddleX -= 1;
 }

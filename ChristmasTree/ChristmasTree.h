@@ -15,7 +15,7 @@ public:
 
     std::vector<char> GetTreeTable() const
     {
-        return mTreeTable;
+        return *mTreeTable.get();
     }
 
     friend std::ostream& operator<<(std::ostream& os, const AsciiChristmasTree& ChristmasTree);
@@ -27,7 +27,7 @@ private:
     void ConstructTree();
     void CreateSection(const int InNumberOfSection);
 
-    std::vector<char> mTreeTable;
+    std::shared_ptr<std::vector<char>> mTreeTable;
 
     int mHeight{ 0 };
     int mWidth{ 0 };
