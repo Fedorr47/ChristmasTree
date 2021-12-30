@@ -15,7 +15,7 @@ public:
 
     std::vector<char> GetTreeTable() const
     {
-        return *mTreeTable.get();
+        return *mTreeTable;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const AsciiChristmasTree& ChristmasTree);
