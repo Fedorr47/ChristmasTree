@@ -4,7 +4,7 @@
 
 #define FIRST_SECTION_MAX_WIDTH 5
 #define STEP_TO_SECTION 2
-#define DEFAULT_SECTION_HEIGHT 2
+#define DEFAULT_SECTION_HEIGHT 3
 
 class AsciiChristmasTree
 {
@@ -13,11 +13,23 @@ public:
         int InSectionNum
     );
 
+    ~AsciiChristmasTree()
+    {
+        if (mTreeTable != nullptr)
+        {
+            delete[] mTreeTable;
+        }
+    }
+
     std::ostream& Print(std::ostream& os) const
     {
-        for (char Char : *mTreeTable)
+        if (mTreeTable != nullptr)
         {
-            os << Char;
+            int IndexLastChar = mHeight * mWidth;
+            for (int i = 0; i < IndexLastChar; ++i)
+            {
+                os << mTreeTable[i];
+            }
         }
         return os;
     }
@@ -31,7 +43,7 @@ private:
     void ConstructTree();
     void CreateSection(const int InNumberOfSection);
 
-    std::shared_ptr<std::vector<char>> mTreeTable;
+    char* mTreeTable{nullptr};
 
     int mHeight{ 0 };
     int mWidth{ 0 };
