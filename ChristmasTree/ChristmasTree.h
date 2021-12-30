@@ -13,9 +13,13 @@ public:
         int InSectionNum
     );
 
-    std::vector<char> GetTreeTable() const
+    std::ostream& Print(std::ostream& os) const
     {
-        return *mTreeTable;
+        for (char Char : *mTreeTable)
+        {
+            os << Char;
+        }
+        return os;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const AsciiChristmasTree& ChristmasTree);

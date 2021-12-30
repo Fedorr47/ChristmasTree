@@ -54,9 +54,5 @@ void AsciiChristmasTree::CreateSection(const int InNumberOfSection)
 
 std::ostream& operator<<(std::ostream& os, const AsciiChristmasTree& ChristmasTree)
 {
-    for (char Char : ChristmasTree.GetTreeTable())
-    {
-        os << Char;
-    }
-    return os;
+    return ChristmasTree.Print(os);
 }
